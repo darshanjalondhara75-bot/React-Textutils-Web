@@ -1,0 +1,243 @@
+.system-monitor-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.system-monitor-container.light-mode {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  color: #333;
+}
+
+.system-monitor-container.dark-mode {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: #fff;
+}
+
+.monitor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.monitor-header h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.monitor-toggle {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #ff6b6b;
+  color: white;
+}
+
+.monitor-toggle.active {
+  background: #51cf66;
+}
+
+.monitor-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.resource-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.resource-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.resource-card h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.resource-card.good {
+  border-left: 4px solid #51cf66;
+}
+
+.resource-card.warning {
+  border-left: 4px solid #fcc419;
+}
+
+.resource-card.critical {
+  border-left: 4px solid #ff6b6b;
+}
+
+.metric-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.metric-row:last-of-type {
+  border-bottom: none;
+}
+
+.metric-label {
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.metric-value {
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+  font-size: 1.1rem;
+}
+
+.fps-value {
+  font-size: 1.5rem;
+  color: #51cf66;
+}
+
+.progress-bar {
+  margin-top: 15px;
+  height: 25px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #51cf66, #fcc419, #ff6b6b);
+  background-size: 200% 100%;
+  border-radius: 12px;
+  transition: width 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+}
+
+.progress-text {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.monitor-info {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.monitor-info p {
+  margin: 5px 0;
+}
+
+.warning-text {
+  color: #fcc419;
+  font-weight: 500;
+}
+
+/* Dark mode specific adjustments */
+.dark-mode .metric-value {
+  color: #ffd43b;
+}
+
+.dark-mode .fps-value {
+  color: #69db7c;
+}
+
+.light-mode .resource-card {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.light-mode .monitor-info {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.light-mode .warning-text {
+  color: #e67700;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .system-monitor-container {
+    margin: 10px;
+    padding: 15px;
+  }
+
+  .monitor-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .monitor-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .resource-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .resource-card {
+    padding: 15px;
+  }
+}
+
+/* Animation for metrics update */
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.metric-value {
+  animation: pulse 2s infinite;
+}
+
+/* Status indicators */
+.memory-card.good .progress-fill {
+  background: #51cf66;
+}
+
+.memory-card.warning .progress-fill {
+  background: #fcc419;
+}
+
+.memory-card.critical .progress-fill {
+  background: #ff6b6b;
+}

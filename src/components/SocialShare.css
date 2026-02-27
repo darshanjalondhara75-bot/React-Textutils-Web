@@ -1,0 +1,160 @@
+/* Social Sharing Component Styles */
+.social-share {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.social-share h3 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #2563eb;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.share-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.share-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.share-btn:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.share-btn:hover:before {
+  left: 100%;
+}
+
+.share-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.share-btn:focus {
+  outline: 3px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.share-icon {
+  font-size: 1.2rem;
+}
+
+.share-btn.facebook {
+  background: linear-gradient(135deg, #1877f2 0%, #42a5f5 100%);
+}
+
+.share-btn.twitter {
+  background: linear-gradient(135deg, #1da1f2 0%, #0d8bd9 100%);
+}
+
+.share-btn.linkedin {
+  background: linear-gradient(135deg, #0077b5 0%, #005885 100%);
+}
+
+.share-btn.reddit {
+  background: linear-gradient(135deg, #ff4500 0%, #cc3600 100%);
+}
+
+.share-btn.whatsapp {
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+}
+
+.share-btn.email {
+  background: linear-gradient(135deg, #ea4335 0%, #d93025 100%);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .social-share {
+    margin: 1.5rem 0;
+    padding: 1rem;
+  }
+  
+  .share-buttons {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.75rem;
+  }
+  
+  .share-btn {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.85rem;
+  }
+  
+  .share-icon {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .social-share h3 {
+    font-size: 1.3rem;
+  }
+  
+  .share-buttons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Dark Mode Support */
+.dark-mode .social-share {
+  background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+  color: #e2e8f0;
+}
+
+.dark-mode .social-share h3 {
+  color: #63b3ed;
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+  .share-btn,
+  .share-btn:before {
+    transition: none;
+  }
+  
+  .share-btn:hover {
+    transform: none;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .share-btn {
+    border: 2px solid white;
+  }
+  
+  .social-share {
+    border: 2px solid #2563eb;
+  }
+}
